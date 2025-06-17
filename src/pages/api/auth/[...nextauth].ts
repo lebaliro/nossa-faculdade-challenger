@@ -5,7 +5,6 @@ import { prisma } from "@/lib/prisma"
 import { createAuthService } from "@/services/auth"
 import { createUserRepository } from "@/repositories/user"
 
-// Instanciar services
 const userRepository = createUserRepository()
 const authService = createAuthService(userRepository)
 
@@ -19,26 +18,21 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Senha", type: "password" },
       },
       async authorize(credentials) {
-        console.log("[AUTH] Tentativa de login:", { email: credentials?.email })
 
         if (!credentials?.email || !credentials?.password) {
-          console.log("[AUTH] Credenciais faltando")
           return null
         }
 
         try {
-          // Usar o service para fazer login
           const user = await authService.login({
             email: credentials.email,
             password: credentials.password,
           })
           
           if (!user) {
-            console.log("[AUTH] Login falhou")
             return null
           }
 
-          console.log("[AUTH] Login bem-sucedido")
           return {
             id: user.id,
             email: user.email,
@@ -46,7 +40,6 @@ export const authOptions: NextAuthOptions = {
             role: user.role,
           }
         } catch (error) {
-          console.error("[AUTH] Erro na autorização:", error)
           return null
         }
       },
