@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:15
+    container_name: nossa_faculdade_db
+    environment:
+      POSTGRES_USER: nossa_faculdade
+      POSTGRES_PASSWORD: senha_segura
+      POSTGRES_DB: nossa_faculdade
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  app:
+    image: node:20
+    working_dir: /app
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: tail -f /dev/null
+    environment:
+      DATABASE_URL: "postgresql://nossa_faculdade:senha_segura@db:5432/nossa_faculdade?schema=public"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "levi@levi.com"
+      PGADMIN_DEFAULT_PASSWORD: "levi"
+    ports:
+      - "16543:80"
+    depends_on:
+      - db
+
+volumes:
+  pg_data:
