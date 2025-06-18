@@ -4,10 +4,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 
-/**
- * Componente Header - Navegação principal do site
- * Responsivo com menu mobile
- */
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -36,7 +32,7 @@ export function Header() {
             <Link href="/cursos" className="text-gray-700 hover:text-blue-600 transition-colors">
               Cursos
             </Link>
-            <Link href="/sobre" className="text-gray-700 hover:text-blue-600 transition-colors">
+            <Link href="/site/about" className="text-gray-700 hover:text-blue-600 transition-colors">
               Sobre Nós
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
