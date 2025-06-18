@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 
-export function HeroSection() {
+export function CallActionSection() {
   return (
     <section className="hero-gradient text-white py-20 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,27 +16,21 @@ export function HeroSection() {
               Aprenda com os melhores profissionais do mercado e conquiste a carreira dos seus sonhos com nossos cursos
               online.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex justify-center md:justify-start">
               <Link
                 href="/cursos"
                 className="bg-yellow-400 text-gray-900 font-bold py-4 px-8 rounded-lg hover:bg-yellow-300 transition-colors text-lg"
               >
                 Ver Todos os Cursos
               </Link>
-              <Link
-                href="#beneficios"
-                className="border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-gray-900 transition-colors text-lg"
-              >
-                Saiba Mais
-              </Link>
             </div>
           </div>
 
           <div className="relative">
-            <div className="relative w-full h-[400px]">
+            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[400px]">
               <Image
                 src="/imgs/first-image.webp"
-                alt="Estudante aprendendo online"
+                alt="Estudante Cursando"
                 fill
                 priority
                 className="rounded-lg shadow-2xl object-cover"
