@@ -30,7 +30,7 @@ export function Header() {
     home: '/',
     contact: '/site/contact',
     about: '/site/about',
-    courses: 'site/courses'
+    courses: '/site/courses'
   }
 
   return (
