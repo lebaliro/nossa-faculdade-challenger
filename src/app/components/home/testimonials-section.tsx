@@ -1,16 +1,7 @@
 import Image from "next/image"
-import { prisma } from "@/lib/prisma"
+import { mockTestimonials } from "@/lib/utils"
 
 export async function TestimonialsSection() {
-  const testimonials = await prisma.testimonial.findMany({
-    where: {
-      published: true,
-    },
-    take: 4,
-    orderBy: {
-      createdAt: "desc",
-    },
-  })
 
   return (
     <section className="py-20 bg-gray-50">
@@ -23,7 +14,7 @@ export async function TestimonialsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
+          {mockTestimonials.map((testimonial) => (
             <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-lg">
               <div className="flex items-center mb-4">
                 {/* Estrelas de avaliação */}

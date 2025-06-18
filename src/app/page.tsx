@@ -2,7 +2,7 @@ import { Header } from "@/app/components/header"
 import { Footer } from "@/app/components/footer"
 import { CallActionSection } from "@/app/components/home/call-action"
 import { BenefitsSection } from "@/app/components/home/benefits-section"
-import { FeaturedCoursesSection } from "@/app/components/home/featured-courses-section"
+import { ListHomeCoursesSection } from "@/app/components/home/list-home-courses-section"
 import { TestimonialsSection } from "@/app/components/home/testimonials-section"
 
 
@@ -13,7 +13,7 @@ export default function HomePage() {
       <main>
         <CallActionSection />
         <BenefitsSection />
-        <FeaturedCoursesSection />
+        <ListHomeCoursesSection />
         <TestimonialsSection />
       </main>
       <Footer />
