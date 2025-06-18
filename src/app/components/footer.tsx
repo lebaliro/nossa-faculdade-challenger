@@ -65,9 +65,9 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>📧 contato@cursosonline.com</li>
-              <li>📱 (11) 99999-9999</li>
-              <li>📍 São Paulo, SP</li>
+              <li>comercial@nossafaculdade.com.br</li>
+              <li>(88) 0800 1770 800</li>
+              <li>São José, Crato - CE</li>
             </ul>
           </div>
         </div>
