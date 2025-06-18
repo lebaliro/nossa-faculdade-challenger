@@ -1,11 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { SessionProvider } from "@/components/session-provider"
+import { Inter } from "next/font/google"
+import { SessionProvider } from "@/app/components/session-provider"
 import "./globals.css"
 
+const inter = Inter({ subsets: ["latin"] })
+
 export const metadata: Metadata = {
-  title: "Minha App",
-  description: "App com autenticação NextAuth",
+  title: "Cursos Online - Transforme sua carreira",
+  description: "Os melhores cursos online para impulsionar sua carreira profissional",
 }
 
 export default function RootLayout({
@@ -15,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className={inter.className}>
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
