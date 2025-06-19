@@ -25,7 +25,6 @@ export class UserRepository implements UserRepositoryInterface {
         name: data.name,
         email: data.email,
         password: data.password,
-        role: data.role || "ADMIN",
       },
     })
 
@@ -45,7 +44,6 @@ export class UserRepository implements UserRepositoryInterface {
       id: prismaUser.id,
       email: prismaUser.email,
       name: prismaUser.name,
-      role: prismaUser.role,
       createdAt: prismaUser.createdAt,
       updatedAt: prismaUser.updatedAt,
     }
@@ -56,7 +54,6 @@ export class UserRepository implements UserRepositoryInterface {
       id: prismaUser.id,
       email: prismaUser.email,
       name: prismaUser.name,
-      role: prismaUser.role,
       password: prismaUser.password,
       createdAt: prismaUser.createdAt,
       updatedAt: prismaUser.updatedAt,
