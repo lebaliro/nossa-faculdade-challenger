@@ -1,7 +1,7 @@
-import { Header } from "@/app/components/header"
-import { Footer } from "@/app/components/footer"
-import { ContactInfo } from "@/app/components/contacts/contact-info"
-import { ContactForm } from "@/app/components/contacts/contact-form"
+import { Header } from "@/components/site/header"
+import { Footer } from "@/components/site/footer"
+import { ContactInfo } from "@/components/contacts/contact-info"
+import { ContactForm } from "@/components/contacts/contact-form"
 
 export default function ContactPage() {
   return (

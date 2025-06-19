@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/header"
-import { Footer } from "@/app/components/footer"
+import { Header } from "@/components/site/header"
+import { Footer } from "@/components/site/footer"
 import Image from "next/image"
 
 export default function AboutPage() {
