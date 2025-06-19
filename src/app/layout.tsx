@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { SessionProvider } from "@/app/components/session-provider"
+import { SessionProvider } from "@/components/session-provider"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })

@@ -1,9 +1,9 @@
-import { Header } from "@/app/components/header"
-import { Footer } from "@/app/components/footer"
-import { CallActionSection } from "@/app/components/home/call-action"
-import { BenefitsSection } from "@/app/components/home/benefits-section"
-import { ListHomeCoursesSection } from "@/app/components/home/list-home-courses-section"
-import { TestimonialsSection } from "@/app/components/home/testimonials-section"
+import { Header } from "@/components/site/header"
+import { Footer } from "@/components/site/footer"
+import { CallActionSection } from "@/components/home/call-action"
+import { BenefitsSection } from "@/components/home/benefits-section"
+import { ListHomeCoursesSection } from "@/components/home/list-home-courses-section"
+import { TestimonialsSection } from "@/components/home/testimonials-section"
 
 
 export default function HomePage() {
