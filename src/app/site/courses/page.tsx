@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { Header } from "@/components/site/header"
 import { Footer } from "@/components/site/footer"
 import { CourseFilters } from "@/components/courses/site/course-filters"
