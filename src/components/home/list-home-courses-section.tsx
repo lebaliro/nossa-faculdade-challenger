@@ -56,7 +56,7 @@ export async function ListHomeCoursesSection() {
 
         <div className="text-center">
           <Link
-            href="/cursos"
+            href="/site/courses"
             className="bg-gray-900 text-white font-bold py-4 px-8 rounded-lg hover:bg-gray-800 transition-colors text-lg"
           >
             Ver Todos os Cursos
