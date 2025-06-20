@@ -31,16 +31,14 @@ export default async function CoursesPage({ searchParams }: CoursesPageProps) {
     const categorySlug = searchParams.category || ""
 
     let categoryId = ""
-    let currentCategory = undefined
     if (categorySlug) {
-      const category = categories.find((cat) => cat.slug === categorySlug)
+      const category = categories.find((category) => category.slug === categorySlug)
       categoryId = category?.id || ""
-      currentCategory = category
     }
 
     const coursesResult = await courseService.getCourses({
-      search: search || undefined,
-      categoryId: categoryId || undefined,
+      search,
+      categoryId,
       page,
       limit: 12,
     })
