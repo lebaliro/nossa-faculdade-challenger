@@ -18,7 +18,7 @@ export function CallActionSection() {
             </p>
             <div className="flex justify-center md:justify-start">
               <Link
-                href="/cursos"
+                href="/site/courses"
                 className="bg-yellow-400 text-gray-900 font-bold py-4 px-8 rounded-lg hover:bg-yellow-300 transition-colors text-lg"
               >
                 Ver Todos os Cursos
