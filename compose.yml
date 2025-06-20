@@ -11,13 +11,14 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   app:
-    image: node:20
-    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nossa_faculdade_app
     depends_on:
       - db
-    volumes:
-      - .:/app
-    command: tail -f /dev/null
+    ports:
+      - "3000:3000"
     environment:
       DATABASE_URL: "postgresql://nossa_faculdade:senha_segura@db:5432/nossa_faculdade?schema=public"
 
