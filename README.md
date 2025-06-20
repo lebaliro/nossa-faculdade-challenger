@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Plataforma de Cursos Online
 
-## Getting Started
+## O que é o projeto
 
-First, run the development server:
+Este projeto é um plataforma de cursos online desenvolvida com Next.js, Prisma e PostgreSQL. O objetivo é oferecer uma experiência moderna para alunos e administradores, permitindo:
+
+- Navegação e busca de cursos por categoria ou palavra-chave
+- Visualização detalhada de cada curso, incluindo preço, descrição e conteúdo programático
+- Cadastro e autenticação de usuários
+- Área administrativa para gestão de cursos e categorias
+
+A plataforma foi pensada para ser escalável, acessível e fácil de usar, tanto para alunos quanto para administradores.
+
+## Como fazer rodá-lo
+
+### Pré-requisitos
+- Node.js 20+
+- Docker e Docker Compose
+
+### Rodando com Docker Compose (recomendado)
+
+1. Clone o repositório e acesse a pasta do projeto.
+2. Execute:
+
+```bash
+docker compose -f compose.yml up --build
+```
+
+- O frontend estará disponível em [http://localhost:3000](http://localhost:3000)
+
+### Ambiente de desenvolvimento
+
+1. Suba o banco de dados e dependências:
+
+```bash
+docker compose -f docker-compose-dev.yml up
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Gere o client do Prisma e rode as migrações:
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+4. Rode o projeto em modo desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- O frontend estará disponível em [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- O arquivo `.env` deve conter a variável `DATABASE_URL` apontando para o banco PostgreSQL.
+- Exemplo:
 
-## Learn More
+```
+DATABASE_URL=postgresql://nossa_faculdade:senha_segura@localhost:5432/nossa_faculdade?schema=public
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Observações sobre design e arquitetura do projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Stack:** Next.js (App Router), React 19, Prisma ORM, PostgreSQL, TailwindCSS, NextAuth para autenticação.
+- **Arquitetura:**
+  - Separação clara entre camadas de serviço (`services`) e repositório (`repositories`), facilitando testes e manutenção.
+  - API RESTful protegida por autenticação JWT (NextAuth), com middleware para proteger rotas administrativas e de criação/edição de cursos.
+  - Utilização do Prisma para acesso e manipulação de dados, com migrations versionadas.
+  - Interface moderna e responsiva, com componentes reutilizáveis e foco em acessibilidade.
+- **Funcionalidades:**
+  - Cadastro e login de usuários
+  - CRUD de cursos e categorias (restrito a administradores)
+  - Listagem e busca de cursos para visitantes
+  - Página de detalhes de curso com informações completas
+  - Sistema de autenticação e proteção de rotas sensíveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
