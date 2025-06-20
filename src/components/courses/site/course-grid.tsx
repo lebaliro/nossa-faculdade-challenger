@@ -1,6 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
 import { formatPrice } from "@/lib/utils"
-import { CourseImage } from "@/components/courses/site/course-image"
 import { Course } from "@/interfaces/course"
 
 
@@ -24,10 +24,11 @@ export function CourseGrid({ courses }: CourseGridProps) {
       {courses?.map((course) => (
         <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
           <div className="relative h-48">
-            <CourseImage
-              src={course.image || "/placeholder.svg?height=300&width=400&text=Curso"}
-              alt={course.title}
-              className="object-cover"
+          <Image
+            src={course.image || "https://placehold.co/400x250"}
+            alt={course.title}
+            fill
+            className="object-cover"
             />
             <div className="absolute top-4 left-4">
               <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
