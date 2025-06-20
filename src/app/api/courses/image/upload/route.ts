@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     const filePath = join(uploadDir, fileName)
     await writeFile(filePath, resizedBuffer)
 
-    const publicUrl = `/imgs/uploads/courses/${fileName}`
+    const publicUrl = `/api/courses/image/${fileName}`
 
     return NextResponse.json({
       success: true,
