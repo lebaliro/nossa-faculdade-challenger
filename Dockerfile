@@ -2,18 +2,17 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY app/package.json app/package-lock.json ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 
-COPY app/ .
+COPY . .
 
 RUN npx prisma generate
 
-RUN npm run db:seed
+COPY entrypoint.sh ./
+RUN chmod +x entrypoint.sh
 
-RUN npm run build
+ENTRYPOINT ["./entrypoint.sh"]
 
-EXPOSE 3000
-
-CMD ["npm", "start"] 
+EXPOSE 3000 
