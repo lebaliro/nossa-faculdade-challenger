@@ -14,14 +14,14 @@ export class CategoryRepository implements CategoryRepositoryInterface {
     }
   }
 
-  private mapToCategory(prismaCategory: Category): Category {
+  private mapToCategory(category: Category): Category {
     return {
-      id: prismaCategory.id,
-      name: prismaCategory.name,
-      slug: prismaCategory.slug,
-      description: prismaCategory.description,
-      createdAt: prismaCategory.createdAt,
-      updatedAt: prismaCategory.updatedAt,
+      id: category.id,
+      name: category.name,
+      slug: category.slug,
+      description: category.description,
+      createdAt: category.createdAt,
+      updatedAt: category.updatedAt,
     }
   }
 }

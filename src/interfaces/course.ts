@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client"
+
 export interface Course {
     id: string
     title: string
@@ -43,6 +45,18 @@ export interface Course {
     limit: number
     totalPages: number
   }
+
+  export type PrismaCourseWithCategory = Prisma.CourseGetPayload<{
+    include: {
+      category: { 
+        select: { 
+          id: true; 
+          name: true; 
+          slug: true 
+        } 
+      }
+    }
+  }>
 
   export interface CourseService {
     getCourses(filters: CourseFilters): Promise<PaginatedCourses>

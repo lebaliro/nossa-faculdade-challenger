@@ -1,5 +1,14 @@
 import { prisma } from "@/lib/prisma"
-import type { Course, CreateCourseData, UpdateCourseData, CourseFilters, PaginatedCourses, CourseRepository as CourseRepositoryInterface } from "@/interfaces/course"
+import { Prisma } from "@prisma/client"
+import type { 
+  Course, 
+  CreateCourseData, 
+  UpdateCourseData, 
+  CourseFilters, 
+  PaginatedCourses, 
+  CourseRepository as CourseRepositoryInterface,
+  PrismaCourseWithCategory 
+} from "@/interfaces/course"
 import { generateSlug } from "@/lib/utils"
 
 
@@ -8,8 +17,7 @@ export class CourseRepository implements CourseRepositoryInterface {
     const { search, categoryId, page = 1, limit = 10 } = filters
     const skip = (page - 1) * limit
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const where: any = {}
+    const where: Prisma.CourseWhereInput = {}
 
     if (search) {
       where.OR = [
@@ -122,20 +130,19 @@ export class CourseRepository implements CourseRepositoryInterface {
     })
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private mapToCourse(prismaCourse: any): Course {
+  private mapToCourse(course: PrismaCourseWithCategory): Course {
     return {
-      id: prismaCourse.id,
-      title: prismaCourse.title,
-      slug: prismaCourse.slug,
-      description: prismaCourse.description,
-      content: prismaCourse.content,
-      price: Number(prismaCourse.price),
-      image: prismaCourse.image,
-      createdAt: prismaCourse.createdAt,
-      updatedAt: prismaCourse.updatedAt,
-      categoryId: prismaCourse.categoryId,
-      category: prismaCourse.category,
+      id: course.id,
+      title: course.title,
+      slug: course.slug,
+      description: course.description,
+      content: course.content,
+      price: Number(course.price),
+      image: course.image,
+      createdAt: course.createdAt,
+      updatedAt: course.updatedAt,
+      categoryId: course.categoryId,
+      category: course.category,
     }
   }
 }

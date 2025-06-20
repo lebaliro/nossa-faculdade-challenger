@@ -30,34 +30,24 @@ export class UserRepository implements UserRepositoryInterface {
     return this.mapToUser(user)
   }
 
-  async findById(id: string): Promise<User | null> {
-    const user = await prisma.user.findUnique({
-      where: { id },
-    })
-
-    return user ? this.mapToUser(user) : null
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private mapToUser(prismaUser: any): User {
+  private mapToUser(user: User): User {
     return {
-      id: prismaUser.id,
-      email: prismaUser.email,
-      name: prismaUser.name,
-      createdAt: prismaUser.createdAt,
-      updatedAt: prismaUser.updatedAt,
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private mapToUserWithPassword(prismaUser: any): UserWithPassword {
+  private mapToUserWithPassword(user: UserWithPassword): UserWithPassword {
     return {
-      id: prismaUser.id,
-      email: prismaUser.email,
-      name: prismaUser.name,
-      password: prismaUser.password,
-      createdAt: prismaUser.createdAt,
-      updatedAt: prismaUser.updatedAt,
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      password: user.password,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
     }
   }
 }
