@@ -22,15 +22,5 @@ services:
     environment:
       DATABASE_URL: "postgresql://nossa_faculdade:senha_segura@db:5432/nossa_faculdade?schema=public"
 
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "levi@levi.com"
-      PGADMIN_DEFAULT_PASSWORD: "levi"
-    ports:
-      - "16543:80"
-    depends_on:
-      - db
-
 volumes:
   pg_data:
