@@ -87,7 +87,7 @@ async function main() {
         - AWS
       `,
       price: 297.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: techCategory!.id,
     },
     {
@@ -113,7 +113,7 @@ async function main() {
         - Testes de usabilidade
       `,
       price: 247.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: designCategory!.id,
     },
     {
@@ -139,7 +139,7 @@ async function main() {
         - ROI e conversões
       `,
       price: 197.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: marketingCategory!.id,
     },
     {
@@ -165,7 +165,7 @@ async function main() {
         - Escalabilidade
       `,
       price: 347.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: businessCategory!.id,
     },
     {
@@ -191,7 +191,7 @@ async function main() {
         - API REST
       `,
       price: 167.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: techCategory!.id,
     },
     {
@@ -217,7 +217,7 @@ async function main() {
         - Exportação otimizada
       `,
       price: 127.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: designCategory!.id,
     },
     {
@@ -243,7 +243,7 @@ async function main() {
         - Memoização
       `,
       price: 187.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: techCategory!.id,
     },
     {
@@ -269,7 +269,7 @@ async function main() {
         - Queries otimizadas
       `,
       price: 157.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: techCategory!.id,
     },
     {
@@ -295,7 +295,7 @@ async function main() {
         - Configuração de projetos
       `,
       price: 137.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: techCategory!.id,
     },
     {
@@ -321,7 +321,7 @@ async function main() {
         - Monitoramento
       `,
       price: 227.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: techCategory!.id,
     },
     {
@@ -347,7 +347,7 @@ async function main() {
         - Versionamento
       `,
       price: 147.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: designCategory!.id,
     },
     {
@@ -373,7 +373,7 @@ async function main() {
         - Caricaturas
       `,
       price: 167.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: designCategory!.id,
     },
     {
@@ -399,7 +399,7 @@ async function main() {
         - GIF animado
       `,
       price: 197.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: designCategory!.id,
     },
     {
@@ -425,7 +425,7 @@ async function main() {
         - Anúncios pagos
       `,
       price: 177.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: marketingCategory!.id,
     },
     {
@@ -451,7 +451,7 @@ async function main() {
         - Parcerias e influenciadores
       `,
       price: 137.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: marketingCategory!.id,
     },
     {
@@ -477,7 +477,7 @@ async function main() {
         - Analytics e relatórios
       `,
       price: 217.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: marketingCategory!.id,
     },
     {
@@ -503,7 +503,7 @@ async function main() {
         - ROI por campanha
       `,
       price: 127.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: marketingCategory!.id,
     },
     {
@@ -529,7 +529,7 @@ async function main() {
         - Gestão de riscos
       `,
       price: 187.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: businessCategory!.id,
     },
     {
@@ -555,7 +555,7 @@ async function main() {
         - Analytics
       `,
       price: 157.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: businessCategory!.id,
     },
     {
@@ -581,7 +581,7 @@ async function main() {
         - Cultura organizacional
       `,
       price: 197.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: businessCategory!.id,
     },
     {
@@ -607,7 +607,7 @@ async function main() {
         - Conversão de vendas
       `,
       price: 167.0,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://placehold.co/400x600",
       categoryId: businessCategory!.id,
     },
   ]
