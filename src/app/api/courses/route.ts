@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { prisma } from "@/lib/prisma"
+import { Prisma } from "@prisma/client"
 
 export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions)
@@ -18,7 +19,7 @@ export async function GET(request: NextRequest) {
 
     const skip = (page - 1) * limit
 
-    const where = {}
+    const where: Prisma.CourseWhereInput = {}
 
     if (search) {
       where.OR = [

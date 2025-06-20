@@ -1,11 +1,6 @@
 "use client"
 
-import { useState } from "react"
-
 export function ContactForm() {
-
-
-
   return (
     <form id="contact-form" className="space-y-6">
 
@@ -68,7 +63,7 @@ export function ContactForm() {
         type="submit"
         className="w-full py-3 px-6 rounded-lg font-semibold transition-colors bg-blue-600 hover:bg-blue-700 text-white"
       >        
-          "Enviar Mensagem"
+          Enviar Mensagem
       </button>
     </form>
   )

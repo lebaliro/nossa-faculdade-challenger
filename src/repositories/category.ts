@@ -14,7 +14,7 @@ export class CategoryRepository implements CategoryRepositoryInterface {
     }
   }
 
-  private mapToCategory(prismaCategory: any): Category {
+  private mapToCategory(prismaCategory: Category): Category {
     return {
       id: prismaCategory.id,
       name: prismaCategory.name,

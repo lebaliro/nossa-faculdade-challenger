@@ -39,6 +39,7 @@ export const authOptions: NextAuthOptions = {
             name: user.name,
           }
         } catch (error) {
+          console.log(`Erro ao tentar autenticar: ${error}`)
           return null
         }
       },
@@ -61,9 +62,9 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (token && session.user) {
-        session.user.id = token.id as string
+        (session.user as { id?: string }).id = token.id as string;
       }
-      return session
+      return session;
     },
   },
   debug: process.env.NODE_ENV === "development",

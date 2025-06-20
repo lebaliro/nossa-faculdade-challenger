@@ -98,7 +98,7 @@ export function CourseFilters({ categories, currentFilters }: CourseFiltersProps
             </span>
           )}
           {searchTerm && (
-            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">"{searchTerm}"</span>
+            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">{searchTerm}</span>
           )}
           <button onClick={clearFilters} className="text-red-600 hover:text-red-800 text-sm underline ml-2">
             Limpar filtros

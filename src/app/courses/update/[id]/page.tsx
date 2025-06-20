@@ -5,14 +5,18 @@ import { createCourseRepository } from "@/repositories/course"
 import { createCategoryService } from "@/services/category"
 import { createCategoryRepository } from "@/repositories/category"
 
+interface EditCoursesProps {
+  params: Promise<{id: string}>
+}
+
 const courseRepository = createCourseRepository()
 const courseService = createCourseService(courseRepository)
 const categoryRepository = createCategoryRepository()
 const categoryService = createCategoryService(categoryRepository)
 
-export default async function EditCoursePage({ params }: { params: { id: string } }) {
+export default async function EditCoursePage({ params }: EditCoursesProps) {
   const [course, categories] = await Promise.all([
-    courseService.getCourseById(params.id),
+    courseService.getCourseById((await params).id),
     categoryService.getCategories()
   ])
 

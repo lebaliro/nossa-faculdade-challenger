@@ -26,7 +26,7 @@ export async function TestimonialsSection() {
                   ))}
                 </div>
               </div>
-              <blockquote className="text-gray-700 text-lg mb-6 leading-relaxed">"{testimonial.content}"</blockquote>
+              <blockquote className="text-gray-700 text-lg mb-6 leading-relaxed">{testimonial.content}</blockquote>
               <div className="flex items-center">
                 <div className="relative w-12 h-12 mr-4">
                   <Image

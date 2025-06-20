@@ -4,17 +4,21 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { createCourseService } from "@/services/course"
 import { createCourseRepository } from "@/repositories/course"
 
+interface DeleteCourseProps {
+  params: Promise<{id: string}>
+}
+
 const courseRepository = createCourseRepository()
 const courseService = createCourseService(courseRepository)
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: DeleteCourseProps) {
   const session = await getServerSession(authOptions)
   if (!session) {
     return NextResponse.json({ error: "Não autorizado" }, { status: 401 })
   }
 
   try {
-    await courseService.deleteCourse(params.id)
+    await courseService.deleteCourse((await params).id)
     return NextResponse.json({ message: "Curso excluído com sucesso" })
   } catch (error) {
     console.error("Erro ao excluir curso:", error)

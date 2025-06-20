@@ -22,8 +22,6 @@ export async function createCourseAction(formData: FormData) {
     const price = Number.parseFloat(formData.get("price") as string)
     const image = formData.get("image") as string
     const categoryId = formData.get("categoryId") as string
-    const featured = formData.get("featured") === "on"
-    const published = formData.get("published") === "on"
 
     if (!title?.trim()) {
       throw new Error("Título é obrigatório")
@@ -69,8 +67,6 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
     const price = Number.parseFloat(formData.get("price") as string)
     const image = formData.get("image") as string
     const categoryId = formData.get("categoryId") as string
-    const featured = formData.get("featured") === "on"
-    const published = formData.get("published") === "on"
 
     if (!title?.trim()) {
       throw new Error("Título é obrigatório")

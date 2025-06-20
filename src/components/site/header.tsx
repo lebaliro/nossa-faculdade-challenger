@@ -4,7 +4,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import { usePathname } from "next/navigation"
-import { link } from "fs"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,7 +13,7 @@ export function Header() {
 
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true 
-    if (path !== "/" && pathname.startsWith(path)) return true
+    if (path !== "/" && pathname?.startsWith(path)) return true
     return false
   }
 

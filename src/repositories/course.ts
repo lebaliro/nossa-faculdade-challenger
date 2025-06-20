@@ -8,6 +8,7 @@ export class CourseRepository implements CourseRepositoryInterface {
     const { search, categoryId, page = 1, limit = 10 } = filters
     const skip = (page - 1) * limit
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const where: any = {}
 
     if (search) {
@@ -90,6 +91,7 @@ export class CourseRepository implements CourseRepositoryInterface {
   }
 
   async update(data: UpdateCourseData): Promise<Course> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const updateData: any = { ...data }
     delete updateData.id
 
@@ -120,6 +122,7 @@ export class CourseRepository implements CourseRepositoryInterface {
     })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private mapToCourse(prismaCourse: any): Course {
     return {
       id: prismaCourse.id,

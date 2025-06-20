@@ -38,6 +38,7 @@ export class UserRepository implements UserRepositoryInterface {
     return user ? this.mapToUser(user) : null
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private mapToUser(prismaUser: any): User {
     return {
       id: prismaUser.id,
@@ -48,6 +49,7 @@ export class UserRepository implements UserRepositoryInterface {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private mapToUserWithPassword(prismaUser: any): UserWithPassword {
     return {
       id: prismaUser.id,

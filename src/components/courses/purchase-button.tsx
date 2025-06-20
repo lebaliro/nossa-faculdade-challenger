@@ -5,10 +5,9 @@ import { useRouter } from "next/navigation"
 
 interface PurchaseButtonProps {
   courseId: string
-  courseTitle: string
 }
 
-export function PurchaseButton({ courseId, courseTitle }: PurchaseButtonProps) {
+export function PurchaseButton({ courseId }: PurchaseButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 

@@ -19,16 +19,16 @@ export interface SearchParams {
 }
 
 export interface CoursesPageProps {
-  searchParams: SearchParams
+  searchParams: Promise<SearchParams>
 }
 
 export default async function CoursesPage({ searchParams }: CoursesPageProps) {
   try {
     const categories = await categoryService.getCategories()
     
-    const page = Number.parseInt(searchParams.page || "1")
-    const search = searchParams.search || ""
-    const categorySlug = searchParams.category || ""
+    const page = Number.parseInt((await searchParams).page || "1")
+    const search = (await searchParams).search || ""
+    const categorySlug = (await searchParams).category || ""
 
     let categoryId = ""
     if (categorySlug) {

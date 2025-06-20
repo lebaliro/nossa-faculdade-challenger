@@ -8,16 +8,16 @@ import { createCourseRepository } from "@/repositories/course"
 import { formatPrice } from "@/lib/utils"
 
 interface CoursePageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 const courseRepository = createCourseRepository()
 const courseService = createCourseService(courseRepository)
 
 export default async function CoursePage({ params }: CoursePageProps) {
-  const course = await courseService.getCourseById(params.id)
+  const course = await courseService.getCourseById((await params).id)
 
   if (!course) {
     notFound()
@@ -44,7 +44,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                     <div className="text-4xl font-bold mb-2">{formatPrice(Number(course.price))}</div>
                     <div className="text-blue-200 line-through text-lg">{formatPrice(Number(course.price) * 1.5)}</div>
                   </div>
-                  <PurchaseButton courseId={course.id} courseTitle={course.title} />
+                  <PurchaseButton courseId={course.id} />
                 </div>
               </div>
 

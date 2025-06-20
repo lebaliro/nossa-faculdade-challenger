@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 
 interface CourseImageProps {
-  src: string | null
+  src: string | undefined
   alt: string
   className?: string
 }

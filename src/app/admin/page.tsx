@@ -48,6 +48,8 @@ export default function AdminPage() {
       const data = await response.json()
       setCategories(data)
     } catch (error) {
+      const messageError = "Erro ao carregar categoria"
+      console.log(`${messageError}: ${error}`)
       setError("Erro ao carregar categorias")
     }
   }
@@ -66,6 +68,8 @@ export default function AdminPage() {
       const data = await response.json()
       setCourses(data)
     } catch (error) {
+      const messageError = "Erro ao carregar cursos"
+      console.log(`${messageError}: ${error}`)
       setError("Erro ao carregar cursos")
     } finally {
       setLoading(false)
@@ -87,7 +91,9 @@ export default function AdminPage() {
         alert(`Erro ao excluir curso: ${errorData.error || "Erro desconhecido"}`)
       }
     } catch (error) {
-      alert("Erro ao excluir curso")
+      const messageError = "Erro ao excluir curso"
+      console.log(`${messageError}: ${error}`)
+      setError("Erro ao excluir curso")
     }
   }
 
@@ -189,7 +195,7 @@ export default function AdminPage() {
                 <p className="text-sm text-red-700 mt-1">{error}</p>
                 <button
                   onClick={() => {
-                    setError(null)
+                    setError(undefined)
                     loadCourses()
                   }}
                   className="text-sm text-red-600 underline hover:no-underline mt-2"
