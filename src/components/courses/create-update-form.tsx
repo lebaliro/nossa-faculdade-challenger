@@ -35,6 +35,7 @@ export function CreateUpdateCourseForm({
   const router = useRouter()
 
   const [createState, createAction, createPending] = useActionState(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (prevState: any, formData: FormData) => {
       try {
         await createCourseAction(formData)
@@ -50,6 +51,7 @@ export function CreateUpdateCourseForm({
   )
 
   const [updateState, updateAction, updatePending] = useActionState(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (prevState: any, formData: FormData) => {
       try {
         if (!courseId) throw new Error("ID do curso não encontrado")
