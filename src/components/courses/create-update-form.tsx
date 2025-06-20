@@ -1,8 +1,9 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useActionState } from "react"
+import { useActionState, useState } from "react"
 import { createCourseAction, updateCourseAction } from "@/app/courses/actions"
+import { ImageUpload } from "@/components/courses/image-upload"
 
 interface Category {
   id: string
@@ -33,11 +34,15 @@ export function CreateUpdateCourseForm({
   courseId,
 }: CreateUpdateCourseFormProps) {
   const router = useRouter()
-
+  const [imageUrl, setImageUrl] = useState(initialData?.image)
+  
   const [createState, createAction, createPending] = useActionState(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (prevState: any, formData: FormData) => {
       try {
+        if (imageUrl) {
+          formData.set("image", imageUrl)
+        }
         await createCourseAction(formData)
         return { success: true, error: null }
       } catch (error) {
@@ -55,6 +60,9 @@ export function CreateUpdateCourseForm({
     async (prevState: any, formData: FormData) => {
       try {
         if (!courseId) throw new Error("ID do curso não encontrado")
+        if (imageUrl) {
+          formData.set("image", imageUrl)
+        }
         await updateCourseAction(courseId, formData)
         return { success: true, error: null }
       } catch (error) {
@@ -131,18 +139,13 @@ export function CreateUpdateCourseForm({
             </div>
 
             <div className="md:col-span-2">
-              <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-2">
-                URL da Imagem
-              </label>
-              <input
-                type="url"
-                id="image"
-                name="image"
-                defaultValue={initialData?.image || ""}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="https://exemplo.com/imagem.jpg"
+            <label className="block text-sm font-medium text-gray-700 mb-2">Imagem do Curso</label>
+              <ImageUpload
+                value={imageUrl}
+                onChange={setImageUrl}
+                onRemove={() => setImageUrl("")}
+                disabled={isPending}
               />
-              <p className="text-sm text-gray-500 mt-1">Deixe em branco para usar imagem padrão</p>
             </div>
 
             <div className="md:col-span-2">
@@ -178,9 +181,6 @@ export function CreateUpdateCourseForm({
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Descreva o conteúdo completo do curso, módulos, o que o aluno vai aprender..."
             />
-            <p className="text-sm text-gray-500 mt-1">
-              Use quebras de linha para organizar o conteúdo. Suporte a Markdown será adicionado em breve.
-            </p>
           </div>
         </div>
 
