@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,26 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Curso {
-  id          Int      @id @default(autoincrement())
-  nome        String
-  descricao   String
-  preco       Float
-  imagemUrl   String?
-  categoria   String
-  conteudo    String?
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  User User[]
+  courses Course[]
+
+  @@map("categories")
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String   
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  cursos   Curso[]
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String
+  content     String   @db.Text
+  price       Decimal  @db.Decimal(10, 2)
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@map("courses")
 }
+
