@@ -1,6 +1,4 @@
-import { redirect, notFound } from "next/navigation"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { notFound } from "next/navigation"
 import { CreateUpdateCourseForm } from "@/components/courses/create-update-form"
 import { createCourseService } from "@/services/course"
 import { createCourseRepository } from "@/repositories/course"
@@ -13,11 +11,6 @@ const categoryRepository = createCategoryRepository()
 const categoryService = createCategoryService(categoryRepository)
 
 export default async function EditCoursePage({ params }: { params: { id: string } }) {
-  const session = await getServerSession(authOptions)
-  if (!session) {
-    redirect("/auth/login")
-  }
-
   const [course, categories] = await Promise.all([
     courseService.getCourseById(params.id),
     categoryService.getCategories()

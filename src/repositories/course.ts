@@ -3,7 +3,7 @@ import type { Course, CreateCourseData, UpdateCourseData, CourseFilters, Paginat
 import { generateSlug } from "@/lib/utils"
 
 
-export class PrismaCourseRepository implements CourseRepositoryInterface {
+export class CourseRepository implements CourseRepositoryInterface {
   async findMany(filters: CourseFilters): Promise<PaginatedCourses> {
     const { search, categoryId, page = 1, limit = 10 } = filters
     const skip = (page - 1) * limit
@@ -93,7 +93,6 @@ export class PrismaCourseRepository implements CourseRepositoryInterface {
     const updateData: any = { ...data }
     delete updateData.id
 
-    // Gerar novo slug se título mudou
     if (data.title) {
       updateData.slug = generateSlug(data.title)
     }
@@ -138,6 +137,6 @@ export class PrismaCourseRepository implements CourseRepositoryInterface {
   }
 }
 
-export const createCourseRepository = (): CourseRepository => {
-  return new PrismaCourseRepository()
+export const createCourseRepository = (): CourseRepositoryInterface => {
+  return new CourseRepository()
 }

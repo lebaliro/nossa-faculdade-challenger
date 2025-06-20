@@ -1,19 +1,11 @@
-import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
-import { createCategoryRepository } from "@/repositories/category"
 import { CreateUpdateCourseForm } from "@/components/courses/create-update-form"
+import { createCategoryRepository } from "@/repositories/category"
 import { createCategoryService } from "@/services/category"
 
 const categoryRepository = createCategoryRepository()
 const categoryService = createCategoryService(categoryRepository)
 
 export default async function CreateCoursePage() {
-  const session = await getServerSession(authOptions)
-  if (!session) {
-    redirect("/auth/login")
-  }
-
   const categories = await categoryService.getCategories()
 
   return (

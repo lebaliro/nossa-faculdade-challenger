@@ -13,7 +13,6 @@ export class UserRepository implements UserRepositoryInterface {
   async findByEmailWithPassword(email: string): Promise<UserWithPassword | null> {
     const user = await prisma.user.findUnique({
       where: { email },
-      // Buscar todos os campos incluindo password
     })
 
     return user ? this.mapToUserWithPassword(user) : null

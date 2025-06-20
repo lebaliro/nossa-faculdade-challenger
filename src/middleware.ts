@@ -1,28 +1,34 @@
-import { withAuth } from "next-auth/middleware"
+import { NextResponse } from "next/server"
+import { getToken } from "next-auth/jwt"
+import type { NextRequest } from "next/server"
 
-export default withAuth(
-  function middleware(req) {
-    console.log("Middleware executado para:", req.nextUrl.pathname)
-  },
-  {
-    callbacks: {
-      authorized: ({ token, req }) => {
-        const { pathname } = req.nextUrl
+const protectedPaths = [
+  "/admin",
+  "/courses/create",
+  "/courses/update"
+]
 
-        if (pathname.startsWith("/auth")) {
-          return true
-        }
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
 
-        if (pathname.startsWith("/admin")) {
-          return !!token
-        }
+  const isProtected = protectedPaths.some((path) => pathname.startsWith(path))
+  if (!isProtected) {
+    return NextResponse.next()
+  }
 
-        return true
-      },
-    },
-  },
-)
+  const token = await getToken({ req: request })
+  if (!token) {
+    const loginUrl = new URL("/auth/login", request.url)
+    return NextResponse.redirect(loginUrl)
+  }
+
+  return NextResponse.next()
+}
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/admin/:path*",
+    "/courses/create",
+    "/courses/update/:path*"
+  ]
 }
